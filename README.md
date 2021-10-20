@@ -21,12 +21,9 @@ conda env export --from-history | grep -v "^prefix: " > environment.yml
 ```
 
 ## Starting and running the application
-
-```
-
-## Starting and running the application
 The application is started with (in the terminal)
 ```
 cd elevator_app/  # Make sure we are in the project root folder for this project
 docker-compose up
 ```
+and then available in the browser at ```http://0.0.0.0:5000```.
