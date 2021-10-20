@@ -1,6 +1,10 @@
 # elevator_app
 Moving elevators
 
+Given my somewhat limited experience withing frontend development I did choose to write the app in Dash.
+Dash is a framwork built on top of Flask and Plotly
+This is the frontend I mainly have been using to build webapplications within my previous data science work.
+
 ## Environment
 
 For this project Anaconda is used.
