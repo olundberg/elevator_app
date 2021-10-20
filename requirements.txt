@@ -1,0 +1,12 @@
+Werkzeug==1.0.1
+dash
+pytest
+dash-bootstrap-components
+dash-uploader
+coverage
+pytest-cov
+dash[testing]
+icecream
+pylint
+gunicorn
+psycopg2-binary
