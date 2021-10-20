@@ -1,14 +1,9 @@
 """Main for gvirus application"""
-import os
-import json
 import dash
 import dash_bootstrap_components as dbc
-from dash import  dcc
 from dash import html
-from dash.dependencies import Input, State, Output, ALL, MATCH
-from dash.exceptions import PreventUpdate
+from dash.dependencies import Input, State, Output
 from src.elevators import get_elevator
-import traceback
 import platform
 from src.elevator_algo import elevator_algo
 from src.elevators import update_elevator
@@ -29,18 +24,26 @@ app.css.config.serve_locally = True
               State("elevator_fig", "figure"))
 def input_value_cb(elevator_value: int, elevators):
     """Change input value from edit field above sliders
+
+    :param elevator_value:
+    :param elevators:
     :returns value: The new value set
     """
     # Calculate new state for elevators
+
+    # Startup will fail
     try:
         current_state = elevators["data"][0]["y"]
-    except:
+    except Exception as e:
+        print(e)
         current_state = [0, 0, 0, 0, 0]
-    elevators_new = elevator_algo(elevator_value,
-                                  current_state)
 
-    return update_elevator(elevators_new)
+    elevators_new, lvl_diff = elevator_algo(elevator_value,
+                                            current_state)
 
+    fig = update_elevator(elevators_new, lvl_diff*1000*2)
+
+    return fig
 
 
 server = app.server

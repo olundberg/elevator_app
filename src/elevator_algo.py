@@ -1,13 +1,14 @@
-"""Elevator level"""
+"""Elevator level algorithm"""
 import numpy as np
 
 
 def elevator_algo(new_lvl, elevators):
-    """
+    """Elevator algorithm for moving one elevator
 
-    :param new_lvl:
-    :param elevators:
-    :returns elevators_updated:
+    :param new_lvl: Which is the level choosen from dropdown
+    :param elevators: Array with current elevator levels
+    :returns elevators_updated: Array with updated elevator levels
+    :returns lvl_diff: Difference between the old elevator and new lvl
     """
     # Calculate distance between new level and the current
     # elevator levels
@@ -15,10 +16,9 @@ def elevator_algo(new_lvl, elevators):
 
     # Find out which is the closest one
     elevator_idx = np.argmin(dist_vec)
+    lvl_diff = np.min(dist_vec)  # How many levels diff
 
-    # Create new positions after movement
-    elevators_new = np.copy(elevators)
+    # Update position
     elevators[elevator_idx] = new_lvl
 
-    return elevators
-
+    return elevators, lvl_diff
